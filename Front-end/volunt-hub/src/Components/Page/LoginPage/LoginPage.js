@@ -50,7 +50,7 @@ export const LoginPage = () => {
           <div>
             <button
               type="button"
-              className="btn btn-link fs-5 text-decoration-none"
+              className="btn btn-link fs-5 text-decoration-none "
             >
               Forget password?
             </button>
