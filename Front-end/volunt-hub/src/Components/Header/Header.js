@@ -1,10 +1,11 @@
 import React from 'react';
 import logo from '../../Assets/Logo/vh_logo.png';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-light p-3">
+      <nav className="navbar navbar-expand-lg bg-light ps-lg-5 pe-lg-5 shadow">
         <div className="container-fluid">
           <div className="p-3">
             <img src={logo} alt="" width="200" height="150" />
@@ -25,35 +26,38 @@ export const Header = () => {
             id="navbarNav"
           >
             <ul className="navbar-nav">
-              <li className="nav-item ms-3 me-3">
-                <a
-                  className="nav-link active fs-3"
-                  aria-current="page"
-                  href="s"
-                >
+              <li className="nav-item m-3 m-3">
+                <Link className="nav-link fs-4" to="/">
                   Home
-                </a>
+                </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link fs-3 ms-3 me-3" href="s">
-                  Features
-                </a>
+              <li className="nav-item m-3 m-3">
+                <Link className="nav-link fs-4" to="/blog">
+                  Blog
+                </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link fs-3 ms-3 me-3" href="s">
-                  Pricing
-                </a>
+              <li className="nav-item m-3 m-3">
+                <Link className="nav-link fs-4" to="/events">
+                  Events
+                </Link>
+              </li>
+              <li className="nav-item m-3 m-3">
+                <Link className="nav-link fs-4" to="/login">
+                  Login
+                </Link>
               </li>
             </ul>
             <ul className="navbar-nav">
-              <li className="nav-item ms-3 me-3">
-                <a
-                  className="nav-link active fs-3  "
-                  aria-current="page"
-                  href="s"
-                >
-                  Admin
-                </a>
+              <li className="nav-item m-3 m-3">
+                <Link to="/admin">
+                  {' '}
+                  <button
+                    type="button"
+                    className="btn btn-primary rounded-pill p-3 ps-4 pe-4 fs-5"
+                  >
+                    Admin
+                  </button>
+                </Link>
               </li>
             </ul>
           </div>
