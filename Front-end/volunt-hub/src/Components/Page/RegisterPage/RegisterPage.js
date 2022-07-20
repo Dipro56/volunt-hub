@@ -13,6 +13,20 @@ export const RegisterPage = () => {
     const confirmPassword = event.target.confirmPassword.value;
 
     console.log(name, email, password, confirmPassword);
+
+    // if (
+    //   password === confirmPassword &&
+    //   email &&
+    //   name &&
+    //   password &&
+    //   confirmPassword
+    // ) {
+    //   console.log(email, password);
+    //   createUserWithEmailAndPassword(email, password);
+    //   verifyEmail();
+    // } else {
+    //   setErrorMessage('Check input fields properly');
+    // }
   };
 
   return (
@@ -83,6 +97,7 @@ export const RegisterPage = () => {
           <p>Or</p>
           <hr className="w-50 ms-3 me-3" />
         </div>
+
         <p className="m-3 fs-5">
           Already have an account?
           <span>

@@ -1,5 +1,10 @@
-import { useState } from 'react';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+} from 'firebase/auth';
 import auth from '../../firebase.init';
 
 const googleProvider = new GoogleAuthProvider();
@@ -13,12 +18,34 @@ export const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        console.log(user);
+        // console.log(user, user.displayName);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const signOutHandle = () => {
+    console.log('sign out');
+    signOut(auth)
+      .then(() => {
+        setUser({});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }, []);
 
   const signInWithFacebook = () => {
     console.log('sign in with facebook');
@@ -27,6 +54,7 @@ export const useFirebase = () => {
   return {
     user,
     signInWithGoogle,
+    signOutHandle,
     signInWithFacebook,
   };
 };

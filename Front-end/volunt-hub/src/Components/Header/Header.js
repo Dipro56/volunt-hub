@@ -1,8 +1,13 @@
 import React from 'react';
 import logo from '../../Assets/Logo/vh_logo.png';
 import { Link } from 'react-router-dom';
+import { useFirebase } from '../Hooks/useFirebase';
 
 export const Header = () => {
+  const { user, signOutHandle } = useFirebase();
+
+  console.log('header : ', user);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-light ps-lg-5 pe-lg-5 shadow">
@@ -42,9 +47,29 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="nav-item m-3 m-3">
-                <Link className="nav-link fs-4" to="/login">
-                  Login
-                </Link>
+                {user.displayName ? (
+                  <div className="fs-4 p-2 text-primary">
+                    <p>{user.displayName}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <p>{}</p>
+                  </div>
+                )}
+              </li>
+              <li className="nav-item m-3 m-3">
+                {user.uid ? (
+                  <button
+                    onClick={signOutHandle}
+                    className="btn btn-link text-decoration-none fs-4"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link className="nav-link fs-4" to="/login">
+                    Login
+                  </Link>
+                )}
               </li>
             </ul>
             <ul className="navbar-nav">
