@@ -2,31 +2,55 @@ import React from 'react';
 import logo from '../../../Assets/Logo/vh_logo.png';
 import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import auth from '../../../firebase.init';
+import { useState } from 'react';
+// import { sendEmailVerification } from 'firebase/auth';
 
 export const RegisterPage = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const nameRef = useRef('');
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+  const confirmPasswordRef = useRef('');
+
+  // const verifyEmail = () =>
+  //   sendEmailVerification(auth.currentUser).then(() => {
+  //     console.log('Email verification sent');
+  //   });
+
   const registrationFormController = (event) => {
     event.preventDefault();
 
-    const name = event.target.name.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const confirmPassword = event.target.confirmPassword.value;
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const confirmPassword = confirmPasswordRef.current.value;
 
-    console.log(name, email, password, confirmPassword);
+    if (
+      password === confirmPassword &&
+      email &&
+      name &&
+      password &&
+      confirmPassword
+    ) {
+      console.log('Correct credential');
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log('created user', user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      console.log('Wrong credential');
+      setErrorMessage('Check input fields properly');
+    }
 
-    // if (
-    //   password === confirmPassword &&
-    //   email &&
-    //   name &&
-    //   password &&
-    //   confirmPassword
-    // ) {
-    //   console.log(email, password);
-    //   createUserWithEmailAndPassword(email, password);
-    //   verifyEmail();
-    // } else {
-    //   setErrorMessage('Check input fields properly');
-    // }
+    //console.log(name, email, password, confirmPassword);
   };
 
   return (
@@ -37,6 +61,7 @@ export const RegisterPage = () => {
         <form onSubmit={registrationFormController}>
           <div className="form-group mt-4 mb-3">
             <TextField
+              inputRef={nameRef}
               id="outlined-basic"
               label="Name"
               variant="outlined"
@@ -49,6 +74,7 @@ export const RegisterPage = () => {
 
           <div className="form-group mt-4 mb-3">
             <TextField
+              inputRef={emailRef}
               id="outlined-basic"
               label="Email"
               variant="outlined"
@@ -61,6 +87,7 @@ export const RegisterPage = () => {
 
           <div className="form-group mt-4 mb-3">
             <TextField
+              inputRef={passwordRef}
               id="outlined-basic"
               label="Password"
               variant="outlined"
@@ -74,6 +101,7 @@ export const RegisterPage = () => {
 
           <div className="form-group mt-4 mb-3">
             <TextField
+              inputRef={confirmPasswordRef}
               id="outlined-basic"
               label="Confirm password"
               variant="outlined"
@@ -98,6 +126,7 @@ export const RegisterPage = () => {
           <hr className="w-50 ms-3 me-3" />
         </div>
 
+        {errorMessage ? <p className="text-danger">{errorMessage}</p> : <></>}
         <p className="m-3 fs-5">
           Already have an account?
           <span>
