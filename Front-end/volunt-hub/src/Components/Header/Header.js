@@ -13,7 +13,7 @@ export const Header = () => {
       <nav className="navbar navbar-expand-lg bg-light ps-lg-5 pe-lg-5 shadow">
         <div className="container-fluid">
           <div className="p-3">
-            <img src={logo} alt="" width="200" height="150" />
+            <img src={logo} alt="" width="110" height="75" />
           </div>
           <button
             className="navbar-toggler"
