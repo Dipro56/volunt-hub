@@ -47,9 +47,9 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="nav-item m-3 m-3">
-                {user.displayName ? (
+                {user.email ? (
                   <div className="fs-4 p-2 text-primary">
-                    <p>{user.displayName}</p>
+                    <p>{user.email}</p>
                   </div>
                 ) : (
                   <div>

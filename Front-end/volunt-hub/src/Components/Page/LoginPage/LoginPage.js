@@ -3,21 +3,66 @@ import logo from '../../../Assets/Logo/vh_logo.png';
 import google from '../../../Assets/Logo/google_logo.png';
 import facebook from '../../../Assets/Logo/facebook_logo.png';
 import { TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useFirebase } from '../../Hooks/useFirebase';
+import { useRef } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { useNavigate } from 'react-router-dom';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 export const LoginPage = () => {
   // const [email, setEmail] = useState('');
+  //const [errorMessage, setErrorMessage] = useState('');
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let form = location.state?.form?.pathname || '/';
+
+  // console.log(user.uid);
+  // console.log(user.displayName);
+
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+
+  const [signInWithEmailAndPassword, user, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  if (user) {
+    navigate(form, { replace: true });
+    console.log('login user found');
+  }
+
+  if (error) {
+    console.log('login no user found');
+    console.log(error.message);
+  }
+
+  const handlePasswordReset = () => {
+    const email = emailRef.current.value;
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log('email sent');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const { signInWithGoogle, signInWithFacebook } = useFirebase();
 
   const loginFormController = (event) => {
     event.preventDefault();
 
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
 
-    console.log(email, password);
+    if (email && password) {
+      console.log(signInWithEmailAndPassword(email, password));
+      signInWithEmailAndPassword(email, password);
+      console.log(email, password);
+    }
   };
 
   return (
@@ -28,6 +73,7 @@ export const LoginPage = () => {
         <form onSubmit={loginFormController}>
           <div className="form-group mt-4 mb-3">
             <TextField
+              inputRef={emailRef}
               id="outlined-basic"
               label="Email"
               variant="outlined"
@@ -40,6 +86,7 @@ export const LoginPage = () => {
 
           <div className="form-group mt-4 mb-3">
             <TextField
+              inputRef={passwordRef}
               id="outlined-basic"
               label="Password"
               variant="outlined"
@@ -55,6 +102,7 @@ export const LoginPage = () => {
             <button
               type="button"
               className="btn btn-link fs-5 text-decoration-none "
+              onClick={handlePasswordReset}
             >
               Forget password?
             </button>
@@ -66,6 +114,7 @@ export const LoginPage = () => {
             Submit
           </button>
         </form>
+        {/* {errorMessage ? <p className="text-danger">{errorMessage}</p> : <></>} */}
         <div className="d-flex mt-3 mb-3">
           <hr className="w-50 ms-3 me-3" />
           <p>Or</p>

@@ -6,7 +6,7 @@ import { useRef } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import auth from '../../../firebase.init';
 import { useState } from 'react';
-// import { sendEmailVerification } from 'firebase/auth';
+import { sendEmailVerification } from 'firebase/auth';
 
 export const RegisterPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -16,10 +16,10 @@ export const RegisterPage = () => {
   const passwordRef = useRef('');
   const confirmPasswordRef = useRef('');
 
-  // const verifyEmail = () =>
-  //   sendEmailVerification(auth.currentUser).then(() => {
-  //     console.log('Email verification sent');
-  //   });
+  const verifyEmail = () =>
+    sendEmailVerification(auth.currentUser).then(() => {
+      console.log('Email verification sent');
+    });
 
   const registrationFormController = (event) => {
     event.preventDefault();
@@ -41,6 +41,7 @@ export const RegisterPage = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log('created user', user);
+          verifyEmail();
         })
         .catch((error) => {
           console.log(error);
