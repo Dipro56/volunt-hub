@@ -61,7 +61,7 @@ export const AdminPage = () => {
   };
 
   return (
-    <div className="mt-3 col-lg-4 col-md-8 col-sm-12 bg-white shadow justify-content-center align-items-center container p-5">
+    <div className="mt-5 col-lg-4 col-md-8 col-sm-12 bg-white shadow justify-content-center align-items-center container p-5">
       <div>
         <img src={logo} alt="" width="150" height="100" />
         <h4 className="m-3">Admin</h4>

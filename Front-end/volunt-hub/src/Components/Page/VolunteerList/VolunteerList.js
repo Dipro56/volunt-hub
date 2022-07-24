@@ -1,11 +1,11 @@
 import React from 'react';
 import AdminNavbar from '../../SideBar/AdminNavbar';
 
-export const DashboardPage = () => {
+export const VolunteerList = () => {
   return (
     <div>
       <AdminNavbar />
-      <h1>dashboard</h1>
+      <h1>Volunteer list</h1>
     </div>
   );
 };
