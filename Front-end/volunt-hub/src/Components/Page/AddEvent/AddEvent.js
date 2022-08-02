@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import AdminNavbar from '../../SideBar/AdminNavbar';
 import { TextField } from '@mui/material';
 import DatePicker from 'react-date-picker';
+import axios from 'axios';
 
 export const AddEvent = () => {
   const [dateValue, setDateValue] = useState(new Date());
@@ -10,7 +11,7 @@ export const AddEvent = () => {
   const imageHandle = (event) => {
     event.preventDefault();
     console.log(event.target.files[0]);
-    setImage(event.target.files[0].name);
+    setImage(event.target.files[0]);
   };
 
   const titleRef = useRef('');
@@ -27,21 +28,19 @@ export const AddEvent = () => {
 
     const eventDetail = { title, description, date, image };
 
+    const fb = new FormData();
+
+    fb.append('image', image);
+    console.log(image);
     console.log(eventDetail);
 
-    fetch('http://localhost:5000/CreateEvent', {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(eventDetail),
-    })
-      .then((response) => response.json())
-      .then((eventDetail) => {
-        console.log('Success:', eventDetail);
+    axios
+      .post('http://localhost:5000/CreateEvent', eventDetail)
+      .then((res) => {
+        console.log(res.data);
       })
-      .catch((error) => {
-        console.error('Error:', error);
+      .catch((err) => {
+        console.log(err);
       });
   };
 

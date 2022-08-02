@@ -5,7 +5,10 @@ const DataSchema = mongoose.Schema(
     title: { type: String },
     description: { type: String },
     date: { type: Date },
-    image: { type: String },
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
   },
   { versionKey: false }
 );

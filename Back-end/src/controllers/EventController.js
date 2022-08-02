@@ -1,14 +1,20 @@
 const EventModel = require('../models/EventModel');
 
 exports.CreateEvent = (req, res) => {
-  let reqBody = req.body;
+  let eventBody = req.body;
+  let fileBody = req.file;
+  // let fileBody = req.file;
 
-  console.log(reqBody);
+  // console.log('file body', fileBody);
 
-  EventModel.create(reqBody, (err, data) => {
+  console.log(eventBody);
+  console.log(fileBody);
+
+  EventModel.create(eventBody, (err, data) => {
     if (err) {
       res.status(400).json({ status: 'fail,', data: err });
     } else {
+      console.log(data);
       res.status(200).json({ status: 'success,', data: data });
     }
   });
