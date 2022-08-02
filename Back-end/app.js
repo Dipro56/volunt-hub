@@ -16,6 +16,7 @@ const hpp = require('hpp');
 
 //database import
 const mongoose = require('mongoose');
+const multer = require('multer');
 
 //security middleware implement
 

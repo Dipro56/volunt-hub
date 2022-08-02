@@ -10,11 +10,10 @@ export const Header = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-light ps-lg-5 pe-lg-5 shadow">
-        <div className="container-fluid">
-          <div className="p-3">
-            <img src={logo} alt="" width="110" height="75" />
-          </div>
+      <nav className="navbar navbar-expand-lg bg-light">
+        <div className="container-fluid ">
+          <img src={logo} alt="" width="100" height="70" />
+
           <button
             className="navbar-toggler"
             type="button"
@@ -24,31 +23,31 @@ export const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon "></span>
           </button>
           <div
             className="collapse navbar-collapse justify-content-end me-5"
             id="navbarNav"
           >
             <ul className="navbar-nav">
-              <li className="nav-item m-3 m-3">
-                <Link className="nav-link fs-4" to="/">
+              <li className="nav-item ">
+                <Link className="nav-link fs-5" to="/">
                   Home
                 </Link>
               </li>
-              <li className="nav-item m-3 m-3">
-                <Link className="nav-link fs-4" to="/blog">
+              <li className="nav-item ">
+                <Link className="nav-link fs-5" to="/blog">
                   Blog
                 </Link>
               </li>
-              <li className="nav-item m-3 m-3">
-                <Link className="nav-link fs-4" to="/events">
+              <li className="nav-item ">
+                <Link className="nav-link fs-5" to="/events">
                   Events
                 </Link>
               </li>
-              <li className="nav-item m-3 m-3">
+              <li className="nav-item">
                 {user.email ? (
-                  <div className="fs-4 p-2 text-primary">
+                  <div className="fs-5 p-2 text-primary">
                     <p>{user.email}</p>
                   </div>
                 ) : (
@@ -57,28 +56,28 @@ export const Header = () => {
                   </div>
                 )}
               </li>
-              <li className="nav-item m-3 m-3">
+              <li className="nav-item ">
                 {user.uid ? (
                   <button
                     onClick={signOutHandle}
-                    className="btn btn-link text-decoration-none fs-4"
+                    className="btn btn-link text-decoration-none fs-5"
                   >
                     Logout
                   </button>
                 ) : (
-                  <Link className="nav-link fs-4" to="/login">
+                  <Link className="nav-link fs-5" to="/login">
                     Login
                   </Link>
                 )}
               </li>
             </ul>
             <ul className="navbar-nav">
-              <li className="nav-item m-3 m-3">
+              <li className="nav-item ">
                 <Link to="/admin">
                   {' '}
                   <button
                     type="button"
-                    className="btn btn-primary rounded-pill p-3 ps-4 pe-4 fs-5"
+                    className="btn btn-primary rounded-pill  ps-4 pe-4 fs-6"
                   >
                     Admin
                   </button>
