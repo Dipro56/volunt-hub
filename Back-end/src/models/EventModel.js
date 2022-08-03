@@ -15,4 +15,19 @@ const DataSchema = mongoose.Schema(
 
 const EventSchema = mongoose.model('Events', DataSchema);
 
-module.exports = EventSchema;
+const GetEventData = {
+  fetchData: function (callback) {
+    const query = {};
+    const eventData = EventSchema.find(query);
+    eventData.exec(function (err, data) {
+      if (err) throw err;
+      // else console.log(data);  //event data details
+      return callback(data);
+    });
+  },
+};
+
+module.exports = {
+  EventSchema,
+  GetEventData,
+};

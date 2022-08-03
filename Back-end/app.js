@@ -30,8 +30,8 @@ app.use(hpp());
 app.use(bodyParser.json());
 
 //rate limit
-const limiter = rateLimit({ windowMs: 15 * 60 * 1000 });
-app.use(limiter);
+// const limiter = rateLimit({ windowMs: 15 * 60 * 1000 });
+// app.use(limiter);
 
 const URI = 'mongodb://127.0.0.1:27017/VoluntHub';
 const OPTION = { user: '', pass: '' };

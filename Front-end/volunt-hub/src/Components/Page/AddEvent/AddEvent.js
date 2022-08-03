@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import AdminNavbar from '../../SideBar/AdminNavbar';
-import { TextField } from '@mui/material';
 import DatePicker from 'react-date-picker';
 import axios from 'axios';
 
@@ -28,16 +27,10 @@ export const AddEvent = () => {
 
     const eventDetail = { title, description, date, image };
 
-    const fb = new FormData();
-
-    fb.append('image', image);
-    console.log(image);
-    console.log(eventDetail);
-
     axios
       .post('http://localhost:5000/CreateEvent', eventDetail)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -55,28 +48,28 @@ export const AddEvent = () => {
           <form onSubmit={addEventFormController} encType="multipart/form-data">
             <div className="form-group mt-4 mb-3">
               <h5 className="d-flex justify-content-start">Title</h5>
-              <TextField
-                inputRef={titleRef}
-                id="outlined-basic"
-                label="Title"
-                variant="outlined"
+              <input
+                ref={titleRef}
                 type="text"
-                className="form-control shadow w-100"
+                className="form-control mt-3  p-3 shadow"
+                id="username"
                 name="title"
+                aria-describedby="emailHelp"
+                placeholder="Title"
                 required
               />
             </div>
 
             <div className="form-group mt-4 mb-3">
               <h5 className="d-flex justify-content-start">Description</h5>
-              <TextField
-                inputRef={descriptionRef}
-                id="outlined-basic"
-                label="Description"
-                variant="outlined"
-                className="form-control shadow w-100"
-                name="description"
+              <input
+                ref={descriptionRef}
                 type="text"
+                className="form-control mt-3  p-3 shadow"
+                id="description"
+                name="description"
+                aria-describedby="emailHelp"
+                placeholder="Description"
                 required
               />
             </div>

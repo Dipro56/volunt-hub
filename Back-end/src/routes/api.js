@@ -6,9 +6,7 @@ router.get('/', (req, res) => {
   res.send('home');
 });
 
-router.get('/hello', (req, res) => {
-  res.send('hello');
-});
+router.get('/EventDetails', EventCntroller.EeventDetails);
 
 router.post('/CreateEvent', EventCntroller.CreateEvent);
 
