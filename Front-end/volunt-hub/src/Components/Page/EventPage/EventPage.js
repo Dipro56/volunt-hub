@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { EventCard } from '../../EventCard/EventCard';
 import { Header } from '../../Header/Header';
 
-export const HomePage = () => {
+export const EventPage = () => {
   const [eventDetail, setEeventDetail] = useState([]);
   const URL = 'http://localhost:5000/EventDetails';
 

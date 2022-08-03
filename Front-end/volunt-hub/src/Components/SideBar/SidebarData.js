@@ -5,8 +5,8 @@ import * as IoIcons5 from 'react-icons/io5';
 
 export const SidebarData = [
   {
-    title: 'Home',
-    path: '/',
+    title: 'Event List',
+    path: '/eventList',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text',
   },

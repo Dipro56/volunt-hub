@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { EventCard } from '../../EventCard/EventCard';
-import { Header } from '../../Header/Header';
+import { EventCardAdmin } from '../../EventCard/EventCardAdmin';
+import AdminNavbar from '../../SideBar/AdminNavbar';
 
-export const HomePage = () => {
+export const EventPageAdmin = () => {
   const [eventDetail, setEeventDetail] = useState([]);
   const URL = 'http://localhost:5000/EventDetails';
 
@@ -15,12 +15,12 @@ export const HomePage = () => {
 
   return (
     <div>
-      <Header />
+      <AdminNavbar />
       <h1>Totlal event {eventDetail.length} </h1>
       <div className="d-flex justify-content-center mb-5">
         <div className="container row ">
           {eventDetail.map((data) => (
-            <EventCard key={data.id} eventData={data} />
+            <EventCardAdmin key={data.id} eventData={data} />
           ))}
         </div>
       </div>

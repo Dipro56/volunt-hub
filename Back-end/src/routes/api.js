@@ -10,4 +10,6 @@ router.get('/EventDetails', EventCntroller.EeventDetails);
 
 router.post('/CreateEvent', EventCntroller.CreateEvent);
 
+router.post('/DeleteEvent', EventCntroller.DeleteEventByID);
+
 module.exports = router;
