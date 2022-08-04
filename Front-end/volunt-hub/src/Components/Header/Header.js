@@ -44,6 +44,7 @@ export const Header = () => {
                 Events
               </Link>
             </li>
+
             <li className="nav-item">
               {user.email ? (
                 <div className="fs-5 p-2 text-primary">

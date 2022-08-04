@@ -9,6 +9,7 @@ import { AddEvent } from './Components/Page/AddEvent/AddEvent';
 import { VolunteerList } from './Components/Page/VolunteerList/VolunteerList';
 import { EventPage } from './Components/Page/EventPage/EventPage';
 import { EventPageAdmin } from './Components/Page/EventPageAdmin/EventPageAdmin';
+import { ParticipationBooking } from './Components/Page/ParticipationBooking/ParticipationBooking';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/list" element={<VolunteerList />} />
         <Route path="/events" element={<EventPage />} />
         <Route path="/eventList" element={<EventPageAdmin />} />
+        <Route path="/events/:id" element={<ParticipationBooking />} />
       </Routes>
     </div>
   );
