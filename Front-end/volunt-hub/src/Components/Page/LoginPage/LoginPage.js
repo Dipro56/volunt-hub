@@ -7,10 +7,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { useFirebase } from '../../Hooks/useFirebase';
 import { useRef } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
+// import auth from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { Header } from '../../Header/Header';
+import { getAuth } from 'firebase/auth';
+import app from '../../../firebase.init';
+
+const auth = getAuth(app);
 
 export const LoginPage = () => {
   // const [email, setEmail] = useState('');

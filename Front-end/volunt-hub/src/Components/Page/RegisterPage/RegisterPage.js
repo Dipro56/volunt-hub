@@ -4,9 +4,12 @@ import { TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import auth from '../../../firebase.init';
 import { useState } from 'react';
 import { sendEmailVerification } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
+import app from '../../../firebase.init';
+
+const auth = getAuth(app);
 
 export const RegisterPage = () => {
   const [errorMessage, setErrorMessage] = useState('');

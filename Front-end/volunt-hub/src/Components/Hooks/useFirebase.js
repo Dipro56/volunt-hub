@@ -5,9 +5,12 @@ import {
   onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
-import auth from '../../firebase.init';
+import { getAuth } from 'firebase/auth';
+import app from '../../firebase.init';
+// import auth from '../../firebase.init';
 
 const googleProvider = new GoogleAuthProvider();
+const auth = getAuth(app);
 
 export const useFirebase = () => {
   const [user, setUser] = useState([]);

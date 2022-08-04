@@ -4,10 +4,13 @@ import { TextField } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { useRef } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
+// import auth from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
+import app from '../../../firebase.init';
 
+const auth = getAuth(app);
 export const AdminPage = () => {
   // const [email, setEmail] = useState('');
   //const [errorMessage, setErrorMessage] = useState('');
