@@ -35,20 +35,29 @@ export const ParticipationBooking = () => {
 
   const nameRef = useRef('');
   const emailRef = useRef('');
-  const mobileRef = useRef('');
+  const mobileNoRef = useRef('');
 
   const participantFormController = (event) => {
     event.preventDefault();
 
     const name = nameRef.current.value;
     const email = emailRef.current.value;
-    const number = mobileRef.current.value;
+    const mobileNo = mobileNoRef.current.value;
     const title = singleEvent?.title;
     const eventID = originalID;
 
-    const participantDetail = { title, name, email, number, eventID };
+    const participantDetail = { title, name, email, mobileNo, eventID };
 
     console.log(participantDetail);
+
+    axios
+      .post('http://localhost:5000/Participant', participantDetail)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     //  const eventDetail = { title, description, date, image };
   };
@@ -98,7 +107,7 @@ export const ParticipationBooking = () => {
             <div className="form-group mt-4 mb-3">
               <h5 className="d-flex justify-content-start">Mobile </h5>
               <input
-                ref={mobileRef}
+                ref={mobileNoRef}
                 type="text"
                 className="form-control mt-3  p-3 shadow"
                 id="description"
