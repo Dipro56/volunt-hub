@@ -18,7 +18,7 @@ export const AdminPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  let form = location.state?.form?.pathname || '/dashboard';
+  let form = location.state?.form?.pathname || '/eventList';
 
   // console.log(user.uid);
   // console.log(user.displayName);

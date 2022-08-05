@@ -4,12 +4,11 @@ import { LoginPage } from './Components/Page/LoginPage/LoginPage';
 import { RegisterPage } from './Components/Page/RegisterPage/RegisterPage';
 import { HomePage } from './Components/Page/HomePage/HomePage';
 import { AdminPage } from './Components/Page/AdminPage/AdminPage';
-import { DashboardPage } from './Components/Page/DashboardPage/DashboardPage';
 import { AddEvent } from './Components/Page/AddEvent/AddEvent';
-import { VolunteerList } from './Components/Page/VolunteerList/VolunteerList';
 import { EventPage } from './Components/Page/EventPage/EventPage';
 import { EventPageAdmin } from './Components/Page/EventPageAdmin/EventPageAdmin';
 import { ParticipationBooking } from './Components/Page/ParticipationBooking/ParticipationBooking';
+import { ParticipantList } from './Components/Page/ParticipantList/ParticipantList';
 
 function App() {
   return (
@@ -19,9 +18,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/addEvent" element={<AddEvent />} />
-        <Route path="/list" element={<VolunteerList />} />
+        <Route path="/list" element={<ParticipantList />} />
         <Route path="/events" element={<EventPage />} />
         <Route path="/eventList" element={<EventPageAdmin />} />
         <Route path="/events/:id" element={<ParticipationBooking />} />

@@ -6,7 +6,7 @@ import AdminNavbar from '../../SideBar/AdminNavbar';
 
 // const db = getFirestore(app);
 
-export const VolunteerList = () => {
+export const ParticipantList = () => {
   // const [userList, setUserList] = useState([]);
 
   // window.addEventListener('load', () => {
@@ -29,7 +29,7 @@ export const VolunteerList = () => {
   return (
     <div>
       <AdminNavbar />
-      <h1>Volunteer list </h1>
+      <h1>Participant list </h1>
     </div>
   );
 };

@@ -34,11 +34,7 @@ export const Header = () => {
                 Home
               </Link>
             </li>
-            <li className="nav-item ">
-              <Link className="nav-link fs-5" to="/blog">
-                Blog
-              </Link>
-            </li>
+
             <li className="nav-item ">
               <Link className="nav-link fs-5" to="/events">
                 Events

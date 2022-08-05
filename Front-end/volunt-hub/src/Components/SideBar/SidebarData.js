@@ -18,7 +18,7 @@ export const SidebarData = [
   },
 
   {
-    title: 'List',
+    title: 'Participant list',
     path: '/list',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text',
