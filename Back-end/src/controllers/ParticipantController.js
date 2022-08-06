@@ -25,3 +25,18 @@ exports.ParticipantList = (req, res) => {
     }
   });
 };
+
+exports.DeleteParticipantID = (req, res) => {
+  const id = req.body.id;
+  console.log('req body', id);
+
+  ParticipantModel.ParticipantSchema.deleteOne({ _id: id }, (err, data) => {
+    console.log('Schema delete', id);
+    if (err) {
+      res.status(400).json({ status: 'fail,', data: err });
+    } else {
+      console.log(data);
+      res.status(200).json({ status: 'success,', data: data });
+    }
+  });
+};

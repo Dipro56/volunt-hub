@@ -1,14 +1,13 @@
 import React from 'react';
-import { useParticipantList } from '../../Hooks/useParticipantList';
 import AdminNavbar from '../../SideBar/AdminNavbar';
+import { ParticipantTable } from './ParticipantData';
 
 export const ParticipantList = () => {
-  const { participantList } = useParticipantList();
-
   return (
     <div>
       <AdminNavbar />
-      <h1>Participant list {participantList.length} </h1>
+      <h4 className="m-4">Participant List </h4>
+      <ParticipantTable />
     </div>
   );
 };
