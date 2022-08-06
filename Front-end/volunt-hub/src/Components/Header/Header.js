@@ -9,9 +9,9 @@ export const Header = () => {
   console.log('header : ', user);
 
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg bg-dark">
       <div className="container-fluid ">
-        <img src={logo} alt="" width="100" height="70" />
+        <img className="bg-light " src={logo} alt="" width="100" height="70" />
 
         <button
           className="navbar-toggler"
@@ -30,20 +30,20 @@ export const Header = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item ">
-              <Link className="nav-link fs-5" to="/">
+              <Link className="nav-link link-light fs-5" to="/">
                 Home
               </Link>
             </li>
 
             <li className="nav-item ">
-              <Link className="nav-link fs-5" to="/events">
+              <Link className="nav-link link-light fs-5" to="/events">
                 Events
               </Link>
             </li>
 
             <li className="nav-item">
               {user.email ? (
-                <div className="fs-5 p-2 text-primary">
+                <div className="fs-5 p-2 text-light">
                   <p>{user.email}</p>
                 </div>
               ) : (
@@ -56,12 +56,12 @@ export const Header = () => {
               {user.uid ? (
                 <button
                   onClick={signOutHandle}
-                  className="btn btn-link text-decoration-none fs-5"
+                  className="btn btn-link link-light text-decoration-none fs-5"
                 >
                   Logout
                 </button>
               ) : (
-                <Link className="nav-link fs-5" to="/login">
+                <Link className="nav-link link-light fs-5" to="/login">
                   Login
                 </Link>
               )}
