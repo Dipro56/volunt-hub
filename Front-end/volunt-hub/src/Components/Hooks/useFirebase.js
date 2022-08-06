@@ -7,6 +7,8 @@ import {
 } from 'firebase/auth';
 import { getAuth } from 'firebase/auth';
 import app from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
+
 // import auth from '../../firebase.init';
 
 const googleProvider = new GoogleAuthProvider();
@@ -14,6 +16,9 @@ const auth = getAuth(app);
 
 export const useFirebase = () => {
   const [user, setUser] = useState([]);
+
+  let form = '/';
+  const navigate = useNavigate();
 
   const signInWithGoogle = () => {
     console.log('google sign in');
@@ -33,6 +38,7 @@ export const useFirebase = () => {
     signOut(auth)
       .then(() => {
         setUser({});
+        navigate(form, { replace: true });
       })
       .catch((error) => {
         console.log(error);

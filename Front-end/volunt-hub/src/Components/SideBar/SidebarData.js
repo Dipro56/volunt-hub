@@ -1,7 +1,6 @@
 import React from 'react';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
-import * as IoIcons5 from 'react-icons/io5';
 
 export const SidebarData = [
   {
@@ -28,13 +27,6 @@ export const SidebarData = [
     title: 'Support',
     path: '/support',
     icon: <IoIcons.IoMdHelpCircle />,
-    cName: 'nav-text',
-  },
-
-  {
-    title: 'Logout',
-    path: '/login',
-    icon: <IoIcons5.IoArrowBackOutline />,
     cName: 'nav-text',
   },
 ];
