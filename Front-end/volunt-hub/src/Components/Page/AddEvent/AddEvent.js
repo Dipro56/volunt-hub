@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import AdminNavbar from '../../SideBar/AdminNavbar';
 import DatePicker from 'react-date-picker';
 import axios from 'axios';
+import logo from '../../../Assets/Logo/vh_logo.png';
 
 export const AddEvent = () => {
   const [dateValue, setDateValue] = useState(new Date());
@@ -40,10 +41,9 @@ export const AddEvent = () => {
   return (
     <div>
       <AdminNavbar />
-      <h1>Add event</h1>
-      <div className="mt-5 col-lg-4 col-md-8 col-sm-12 bg-white shadow justify-content-center align-items-center container p-5">
+      <div className="mt-5 col-lg-4 col-md-8 col-sm-12 bg-white shadow justify-content-center align-items-center container p-5 mb-5">
         <div>
-          {/* <img src={logo} alt="" width="150" height="100" /> */}
+          <img src={logo} alt="" width="120" height="80" />
           <h4 className="m-3">Add event</h4>
           <form onSubmit={addEventFormController} encType="multipart/form-data">
             <div className="form-group mt-4 mb-3">

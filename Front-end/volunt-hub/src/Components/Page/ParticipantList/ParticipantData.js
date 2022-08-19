@@ -35,7 +35,6 @@ export const ParticipantTable = () => {
             const URL = `http://localhost:5000/DeleteParticipant`;
             const id = row._id;
             // const _id = { id };
-
             // console.log(_id);
 
             axios

@@ -16,7 +16,7 @@ export const EventPageAdmin = () => {
   return (
     <div>
       <AdminNavbar />
-      <h1>Total event {eventDetail.length} </h1>
+      <h3 className="m-3">Total event {eventDetail.length} </h3>
       <div className="d-flex justify-content-center mb-5">
         <div className="container row ">
           {eventDetail.map((data) => (
